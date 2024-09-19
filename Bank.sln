@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domen", "Domen", "{10AECAB2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem.Domen", "BankSystemApplication\BankSystem.Domen.csproj", "{4319B274-9554-444B-9369-DC5C98D563DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticeWithTypes", "PracticeWithTypes\PracticeWithTypes.csproj", "{73BB1FC8-2FFF-4EC4-8531-7F271A7CA145}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practicee", "PracticeWithTypes\Practicee.csproj", "{73BB1FC8-2FFF-4EC4-8531-7F271A7CA145}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
