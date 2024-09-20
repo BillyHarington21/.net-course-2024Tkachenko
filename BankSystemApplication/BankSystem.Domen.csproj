@@ -7,8 +7,8 @@
     <ProjectGuid>{4319B274-9554-444B-9369-DC5C98D563DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BankSystemApplication</RootNamespace>
-    <AssemblyName>BankSystemApplication</AssemblyName>
+    <RootNamespace>BankSystemDomen</RootNamespace>
+    <AssemblyName>BankSystemDomen</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modelss\Classes.cs" />
+    <Compile Include="Modelss\Class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
