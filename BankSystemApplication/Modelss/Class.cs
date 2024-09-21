@@ -17,9 +17,10 @@ namespace BankSystem
         public class Employee : Person
         {
             public string Contract { get; set; }
-            public float Salary { get; set; }
+            public double Salary { get; set; }
+            public string Post {  get; set; }
         }
-        public class Client : Person
+        public class Client : Employee
         {
             
         }
