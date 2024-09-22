@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modelss\Class.cs" />
+    <Compile Include="Modelss\Person.cs" />
+    <Compile Include="Modelss\Client.cs" />
+    <Compile Include="Modelss\Currency.cs" />
+    <Compile Include="Modelss\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
