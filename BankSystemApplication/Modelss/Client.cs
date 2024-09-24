@@ -8,5 +8,7 @@ namespace BankSystemDomen.Modelss
 {
     public class Client : Employee
     {
+        public string PhoneNumber { get; set; }
+        public int Age { get; set; }
     }
 }
