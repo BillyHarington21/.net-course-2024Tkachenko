@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-using static BankSystem.Person;
-
 namespace BankSystem.App.Services
 {
     public class BankService
@@ -27,8 +25,8 @@ namespace BankSystem.App.Services
             string t = Console.ReadLine();
             int amount = int.Parse(t);
 
-            double salary = (ProfitCosts[0] - ProfitCosts[1])/amount;
-            return salary;
+            decimal salary = (ProfitCosts[0] - ProfitCosts[1])/amount;
+            return (double)salary;
         }
          
         // ( ** ) Метод для преобразования клиента банка в сотрудника
