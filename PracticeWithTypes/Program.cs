@@ -60,31 +60,41 @@ class Programm
         Num = ClientNumber;
         
         // поиск клиента по его номеру в списке
-        var SearchedClientPhone = BankClients[Num()].PhoneNumber;
+        var searchedClientPhone = BankClients[Num()].PhoneNumber;
 
         stopwatch.Start();
-        var SearchedClient = BankClients.FirstOrDefault(client => client.PhoneNumber == SearchedClientPhone);
+        for (int i = 0; i <= 9; i++)
+        {
+            var SearchedClient = BankClients.FirstOrDefault(client => client.PhoneNumber == searchedClientPhone);
+        }
         stopwatch.Stop();
 
         Console.WriteLine("{0}",stopwatch.ElapsedMilliseconds);
         stopwatch.Reset();
 
         // поиск выборки клиентов младше определенного возраста
-        int Age = 25;
+        int age = 25;
 
         stopwatch.Start();
-        var SearchedClientToAge = BankClients.Where(Client => Client.Age > Age).ToList();
+        for (int i = 0; i <= 9; i++)
+        {
+            var searchedClientToAge = BankClients.Where(Client => Client.Age > age).ToList();
+        }
         stopwatch.Stop();
 
         Console.WriteLine("{0}", stopwatch.ElapsedMilliseconds);
         stopwatch.Reset();
 
         // поиск клиента по его номеру из словаря
-        var ListAndDictionaryClients = testDataGenerator.DictionaryClients();
-        var SearchedClientPhoneInList = ListAndDictionaryClients.Clients[Num()].PhoneNumber;// берем номер из списка клиентов из которого и составили словарь
+        var clientsInDictionary = testDataGenerator.DictionaryClients();
+        var listClientFromDictionary = clientsInDictionary.ToList();
+        var searchedClientPhoneInList = listClientFromDictionary[Num()].Value.PhoneNumber;// берем номер из списка клиентов из которого и составили словарь
        
         stopwatch.Start();
-        var SearchedClientInDictionary = ListAndDictionaryClients.ClientDictionary[SearchedClientPhoneInList];
+        for (int i = 0; i<= 9; i++)
+        {
+            var SearchedClientInDictionary = clientsInDictionary[searchedClientPhoneInList]; 
+        }           
         stopwatch.Stop();
 
         Console.WriteLine("{0}", stopwatch.ElapsedMilliseconds);
@@ -94,29 +104,37 @@ class Programm
         List<Employee> employees = testDataGenerator.Employees(); 
 
         stopwatch.Start();
-        var EmployeeWithMinSalary = employees.MinBy(employees => employees.Salary);
+        for (int i = 0; i <= 9; i++)
+        {
+            var employeeWithMinSalary = employees.MinBy(employees => employees.Salary);
+        }
         stopwatch.Stop();
         stopwatch.Reset();
 
-        // сравнение способов поиска послднего элемента словаря
-        var LastClientInDictionary = ListAndDictionaryClients.ClientDictionary.Last();
+        // сравнение способов поиска послднего элемента словаря (берем дланные из метода выше)
+        var keyOfLastClientInDictionary = clientsInDictionary.Last();
+        stopwatch.Start();
+       // for (int i = 0; i <= 9; i++)
+        {
+            var lastClientInDictionary1 = clientsInDictionary.FirstOrDefault(s => s.Key == keyOfLastClientInDictionary.Key);
+        }
+        stopwatch.Stop();
+        long fistWayFindLastClientInDictionary = stopwatch.ElapsedTicks; 
 
         stopwatch.Start();
-        var LastClientInDictionary1 = ListAndDictionaryClients.ClientDictionary.FirstOrDefault(last => last.Key == LastClientInDictionary.Key );
+       // for (int i = 0; i <= 9; i++)
+        {
+            var lastClientInDictionary2 = clientsInDictionary[keyOfLastClientInDictionary.Key];
+        }
         stopwatch.Stop();
-        long FistWayFindLastClientInDictionary = stopwatch.ElapsedTicks; stopwatch.Reset();
+        long secondWayFindLastClientInDictionary = stopwatch.ElapsedTicks; 
 
-        stopwatch.Start();
-        var LastClientInDictionary2 = ListAndDictionaryClients.ClientDictionary[LastClientInDictionary.Key];
-        stopwatch.Stop();
-        long SecondWayFindLastClientInDictionary = stopwatch.ElapsedTicks; stopwatch.Reset();
-
-        long EffectiveWay = Math.Min(FistWayFindLastClientInDictionary, SecondWayFindLastClientInDictionary);
-        if ( EffectiveWay == SecondWayFindLastClientInDictionary)
+        long EffectiveWay = Math.Min(fistWayFindLastClientInDictionary, secondWayFindLastClientInDictionary);
+        if ( EffectiveWay == secondWayFindLastClientInDictionary)
         {
             Console.WriteLine("способ 2 быстрее");
         }
-        else if (EffectiveWay == FistWayFindLastClientInDictionary) 
+        else if (EffectiveWay == fistWayFindLastClientInDictionary) 
         {
             Console.WriteLine("способ 1 быстрее"); 
         }

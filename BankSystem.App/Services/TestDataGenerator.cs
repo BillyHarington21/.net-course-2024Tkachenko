@@ -1,13 +1,13 @@
 ﻿using BankSystemDomen.Modelss;
 using Bogus;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace BankSystem.App.Services
 {
     public class TestDataGenerator
     {
-        // нуно добавить возраст клиента!!!
         public List<Client> Clients()
         {
             var FakeClient = new Faker<Client>()
@@ -30,29 +30,16 @@ namespace BankSystem.App.Services
             var employees = employeeFaker.Generate(10);
             return employees;
         }
-        // создаю класс для удобства работы со словарем, тк словарь создаю из элементов списка и для исследований нуно, чтобы данные списка клиентов и словаря клиентов были одиннаковыми 
-        public class ClientInDictionary
-        {
-            public Dictionary<string, Client> ClientDictionary { get; set; }
-            public List<Client> Clients { get; set; }
-        }
-        public ClientInDictionary DictionaryClients()
+              
+        public Dictionary<string, Client> DictionaryClients()
         {
            
-            List<Client> clients = Clients();
-                            
-            var ClientDictionary = new Dictionary<string, Client>();
-
-            foreach (var client in clients)
-            {
-                if (!ClientDictionary.ContainsKey(client.PhoneNumber))                                  
-                    ClientDictionary[client.PhoneNumber] = client;                 
-            }
-            return new ClientInDictionary()
-            {
-                ClientDictionary = ClientDictionary,
-                Clients = clients
-            }; ;
+            List<Client> clients = Clients();                           
+            
+            Dictionary<string, Client> clientDictionary = clients.ToDictionary(client => client.PhoneNumber, client => client);
+            return clientDictionary;
         }
+        
+        
     }
 }
