@@ -40,12 +40,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BankSystemApplication\BankSystem.Domen.csproj">
-      <Project>{4319b274-9554-444b-9369-dc5c98d563db}</Project>
-      <Name>BankSystem.Domen</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Bogus, Version=35.6.1.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
       <HintPath>..\packages\Bogus.35.6.1\lib\net40\Bogus.dll</HintPath>
     </Reference>
@@ -55,6 +49,12 @@
   <ItemGroup>
     <Compile Include="Services\BankService.cs" />
     <Compile Include="Services\TestDataGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BankSystemApplication\BankSystem.Domen.csproj">
+      <Project>{4319B274-9554-444B-9369-DC5C98D563DB}</Project>
+      <Name>BankSystem.Domen</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
