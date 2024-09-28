@@ -51,8 +51,8 @@
     <Compile Include="Services\TestDataGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BankSystemApplication\BankSystem.Domen.csproj">
-      <Project>{4319B274-9554-444B-9369-DC5C98D563DB}</Project>
+    <ProjectReference Include="..\BankSystem.Domen\BankSystem.Domen.csproj">
+      <Project>{81cbfbfb-1eb6-4016-b3ab-bc474e555d1f}</Project>
       <Name>BankSystem.Domen</Name>
     </ProjectReference>
   </ItemGroup>

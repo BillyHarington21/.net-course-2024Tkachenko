@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Xml.Linq;
-using static BankSystem.Person;
-using BankSystem.App.Services;
-using BankSystemDomen.Modelss;
+﻿using BankSystem.App.Services;
 using System.Diagnostics;
+using BankSystemDomen.Modelss;
 
 class Programm
 {
