@@ -42,18 +42,18 @@ namespace BankSystem.App.Services
             return clientDictionary;
         }
 
-        public Dictionary<int, List<Account>> DictionaryAccountsOfClients(Dictionary<string, Client> dictionaryClients)
+        public Dictionary<Client, List<Account>> DictionaryAccountsOfClients(List<Client> clients)
         {         
             var fakeAccount = new Faker<Account>()
                 .RuleFor(a => a.Currency, a => new Currency { Name = a.PickRandom(new[] { "USD", "EUR", "RUB" }) })
                 .RuleFor(a => a.Amount, a => a.Random.Decimal(500, 10000));
 
-            Dictionary<int, List<Account>> clientsAccount = new Dictionary<int, List<Account>>();
-            foreach (var client in dictionaryClients)
+            Dictionary<Client, List<Account>> clientsAccount = new Dictionary<Client, List<Account>>();
+            foreach (var client in clients)
             {
                 int amountAccount = new Random().Next(1, 5);
                 List<Account> accounts = fakeAccount.Generate(amountAccount);
-                clientsAccount[client.Value.GetHashCode()] = accounts;
+                clientsAccount[client] = accounts;
             }
             return clientsAccount;
         }
