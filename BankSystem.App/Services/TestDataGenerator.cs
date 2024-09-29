@@ -1,14 +1,16 @@
 ﻿using BankSystemDomen.Modelss;
 using Bogus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 
 
 namespace BankSystem.App.Services
 {
     public class TestDataGenerator
     {
-        public List<Client> Clients()
+        public List<Client> Clients(int amount)
         {
             var FakeClient = new Faker<Client>()
                  .RuleFor(c => c.Name, f => f.Name.FullName())
@@ -16,7 +18,7 @@ namespace BankSystem.App.Services
                  .RuleFor(c => c.PhoneNumber, f => f.Phone.PhoneNumber())
                  .RuleFor(c => c.Age, f => f.Random.Int(20, 35));
 
-            var clients = FakeClient.Generate(1000);
+            var clients = FakeClient.Generate(amount);
             return clients;
         }
         public List<Employee> Employees()
@@ -34,12 +36,28 @@ namespace BankSystem.App.Services
         public Dictionary<string, Client> DictionaryClients()
         {
            
-            List<Client> clients = Clients();                           
+            List<Client> clients = Clients(1000);                           
             
             Dictionary<string, Client> clientDictionary = clients.ToDictionary(client => client.PhoneNumber, client => client);
             return clientDictionary;
         }
-        
-        
+
+        public Dictionary<int, List<Account>> DictionaryAccountsOfClients(Dictionary<string, Client> dictionaryClients)
+        {         
+            var fakeAccount = new Faker<Account>()
+                .RuleFor(a => a.Currency, a => new Currency { Name = a.PickRandom(new[] { "USD", "EUR", "RUB" }) })
+                .RuleFor(a => a.Amount, a => a.Random.Decimal(500, 10000));
+
+            Dictionary<int, List<Account>> clientsAccount = new Dictionary<int, List<Account>>();
+            foreach (var client in dictionaryClients)
+            {
+                int amountAccount = new Random().Next(1, 5);
+                List<Account> accounts = fakeAccount.Generate(amountAccount);
+                clientsAccount[client.Value.GetHashCode()] = accounts;
+            }
+            return clientsAccount;
+        }
+
+
     }
 }

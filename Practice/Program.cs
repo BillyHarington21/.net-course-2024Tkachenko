@@ -45,12 +45,12 @@ class Programm
         Stopwatch stopwatch = new Stopwatch();
         
              
-        List<Client> BankClients =  testDataGenerator.Clients();
+        List<Client> BankClients =  testDataGenerator.Clients(1000);
         Random random = new Random();
         Number Num;
         int ClientNumber()
         {
-            int I = random.Next(1, 1000);
+            int I = random.Next(1, 100);
             return I;
         }
         Num = ClientNumber;
@@ -134,7 +134,6 @@ class Programm
         {
             Console.WriteLine("способ 1 быстрее"); 
         }
-
     }
 
     // (   ) Метод для добавления и обновления значений всех свойств структуры Currency 
