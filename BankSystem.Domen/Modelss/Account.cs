@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankSystemDomen.Modelss
 {
-    public class Account : Client
+    public class Account
     {
-       
+        public Currency Currency { get; set; }
+        public decimal Amount { get; set; }
+        
     }
 }
