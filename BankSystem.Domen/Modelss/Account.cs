@@ -10,13 +10,6 @@ namespace BankSystemDomen.Modelss
     {
         public Currency Currency { get; set; }
         public decimal Amount { get; set; }
-        public override bool Equals(object obj)
-        {
-            if (obj is Account account)
-            {
-                return this.Amount == account.Amount;
-            }
-            else return false;
-        }
+        
     }
 }
