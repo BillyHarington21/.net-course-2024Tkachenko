@@ -11,10 +11,18 @@ namespace BankSystemDomen.Modelss
         public string PhoneNumber { get; set; }
         public int Age { get; set; }
 
-        public override int GetHashCode()
+        /*public override int GetHashCode()
         {
             return Id.GetHashCode();
         }
-       
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            var other = (Client)obj;
+            return this.Id.GetHashCode() == other.Id.GetHashCode();
+        }*/
+
     }
 }

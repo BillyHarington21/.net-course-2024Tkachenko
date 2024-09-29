@@ -10,13 +10,13 @@ namespace ServiceTests
         {
             TestDataGenerator testDataGenerator = new TestDataGenerator();
 
-            var clientsDictionary = testDataGenerator.DictionaryClients();
+            var clients = testDataGenerator.Clients(1000);
             Random random = new Random();
             
 
-            var dictionaryAccounts = testDataGenerator.DictionaryAccountsOfClients(clientsDictionary);         
+            var dictionaryAccounts = testDataGenerator.DictionaryAccountsOfClients(clients);         
 
-            var listOfClientsFromDictionary = clientsDictionary.Values.ToList();
+            var listOfClientsFromDictionary = clients.ToList();
             var randomClient = listOfClientsFromDictionary[random.Next(listOfClientsFromDictionary.Count)];
 
             Client client = new Client()
@@ -27,7 +27,7 @@ namespace ServiceTests
                 PhoneNumber = randomClient.PhoneNumber
             };
            
-            List<Account> accountsRandomClientFromDictionary = dictionaryAccounts[client.GetHashCode()];
+            List<Account> accountsRandomClientFromDictionary = dictionaryAccounts[client];
             
             Assert.NotEmpty(accountsRandomClientFromDictionary);// проверяем существование списка счетов, ожидаемый исход True при переопределенном методе GetHashCode, false при не переопределенном
             
@@ -37,14 +37,14 @@ namespace ServiceTests
         {
             TestDataGenerator testDataGenerator = new TestDataGenerator();
 
-            var clientsDictionary = testDataGenerator.DictionaryClients();
+            var clients = testDataGenerator.Clients(1000);
             Random random = new Random();
 
 
-            var dictionaryAccounts = testDataGenerator.DictionaryAccountsOfClients(clientsDictionary);
+            var dictionaryAccounts = testDataGenerator.DictionaryAccountsOfClients(clients);
 
-            var listOfClientsFromDictionary = clientsDictionary.Values.ToList();
-            var randomClient = listOfClientsFromDictionary[random.Next(listOfClientsFromDictionary.Count)];
+            
+            var randomClient = clients[random.Next(clients.Count)];
 
             Client client = new Client()
             {
@@ -54,10 +54,10 @@ namespace ServiceTests
                 PhoneNumber = randomClient.PhoneNumber
             };
 
-            List<Account> accountsRandomClientFromDictionary = dictionaryAccounts[client.GetHashCode()];
+            List<Account> accountsRandomClientFromDictionary = dictionaryAccounts[client];
             var keyFromValue = dictionaryAccounts.FirstOrDefault(w => w.Value == accountsRandomClientFromDictionary).Key;
 
-            Assert.True(client.GetHashCode().Equals(keyFromValue));// проверяем равенство хэш-кодов к одному и тому же объекту при переопрделенном методе GetHashCode() ожидается - True, при не переопреденном - False  
+            Assert.True(accountsRandomClientFromDictionary.Equals(dictionaryAccounts[keyFromValue]));// проверяем равенство хэш-кодов к одному и тому же объекту при переопрделенном методе GetHashCode() ожидается - True, при не переопреденном - False  
         }
 
     }
